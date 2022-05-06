@@ -15,7 +15,7 @@ abstract class FilterApplierInterface
 
     abstract public function apply(QueryBuilder $target, string $alias): void;
 
-    abstract public function buildDto($data): void;
+    abstract public function buildDto($data): FilterDtoInterface;
 
     protected function validate(FilterDtoInterface $filterDto) {
         $errors = $this->validator->validate($filterDto);

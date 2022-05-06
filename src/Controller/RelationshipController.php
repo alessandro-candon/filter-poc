@@ -5,35 +5,33 @@ namespace App\Controller;
 use App\Filters\Appliers\RelationshipNameFilter\RelationshipNameFilterApplier;
 use App\Filters\Appliers\TestNameFilter\TestNameFilterApplier;
 use App\Filters\Shared\FilterParams;
+use App\Repository\RelationshipRepository;
 use App\Repository\TestRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController extends AbstractController
+class RelationshipController extends AbstractController
 {
-    #[Route('/test', name: 'app_test')]
+    #[Route('/relationship', name: 'app_relationship')]
     public function index(
         Request $request,
-        TestRepository $testRepository,
-        TestNameFilterApplier $testNameFilterApplier,
+        RelationshipRepository $relationshipRepository,
         RelationshipNameFilterApplier $relationshipNameFilterApplier
     ): Response
     {
-
         $filterParams = new FilterParams($request->query->all());
 
         $filterParams
-            ->addApplier($testNameFilterApplier)
             ->addApplier($relationshipNameFilterApplier);
 
-        $test = $testRepository->findAllWithFilters($filterParams);
+        $r = $relationshipRepository->findAllWithFilters($filterParams);
 
-        dd($test);
+        dd($r);
 
-        return $this->render('test/index.html.twig', [
-            'controller_name' => 'TestController',
+        return $this->render('relationship/index.html.twig', [
+            'controller_name' => 'RelationshipController',
         ]);
     }
 }

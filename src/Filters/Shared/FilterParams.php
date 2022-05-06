@@ -32,12 +32,16 @@ class FilterParams
         return $this;
     }
 
-    public function applyFilter(QueryBuilder $target, string $alias): void
+    public function applyFilter(QueryBuilder $target, string $defaultAlias, array $specificAliases = []): void
     {
         foreach ($this->data as $key => $value) {
             if (array_key_exists($key, $this->appliers)) {
                 $filterToApply = $this->appliers[$key];
-                $filterToApply->buildDto($value);
+                $filterDto = $filterToApply->buildDto($value);
+
+                $alias = array_key_exists($filterDto::class, $specificAliases) ?
+                    $specificAliases[$filterDto::class] : $defaultAlias;
+
                 $filterToApply->apply($target, $alias);
             }
         }

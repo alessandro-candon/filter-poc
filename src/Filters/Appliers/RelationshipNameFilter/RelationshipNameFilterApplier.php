@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Filters\Appliers\TestNameFilter;
+namespace App\Filters\Appliers\RelationshipNameFilter;
 
 use App\Filters\Shared\FilterApplierInterface;
 use App\Filters\Shared\FilterDtoInterface;
 use Doctrine\ORM\QueryBuilder;
-use phpDocumentor\Reflection\Types\This;
 
-class TestNameFilterApplier extends FilterApplierInterface
+class RelationshipNameFilterApplier extends FilterApplierInterface
 {
-    const KEY = 'test_name';
+    const KEY = 'relationship_name';
 
     private FilterDtoInterface $filterDto;
 
@@ -26,7 +25,7 @@ class TestNameFilterApplier extends FilterApplierInterface
     }
 
     public function buildDto($data): FilterDtoInterface {
-        $this->filterDto = new TestNameFilterDto($data);
+        $this->filterDto = new RelationshipFilterDto($data);
         $this->validate($this->filterDto);
         return $this->filterDto;
     }

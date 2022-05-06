@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filters\Appliers\TestNameFilter;
+namespace App\Filters\Appliers\RelationshipNameFilter;
 
 use App\Filters\Shared\FilterDtoInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class TestFilterDto implements FilterDtoInterface
+class RelationshipFilterDto implements FilterDtoInterface
 {
     #[Assert\NotBlank]
     #[Assert\NotNull]
