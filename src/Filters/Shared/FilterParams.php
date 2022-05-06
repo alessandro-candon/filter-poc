@@ -32,6 +32,8 @@ class FilterParams
         return $this;
     }
 
+    //applico le query di filtro
+    // con i realativi alias
     public function applyFilter(QueryBuilder $target, string $defaultAlias, array $specificAliases = []): void
     {
         foreach ($this->data as $key => $value) {

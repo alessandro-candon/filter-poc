@@ -30,6 +30,7 @@ class TestRepository extends ServiceEntityRepository
 
     public function findAllWithFilters(FilterParams $filterParams) {
 
+        // creo la query di base con i join
         $qb = $this->createQueryBuilder('t')
             ->select('t', 'r')
             ->leftJoin(
@@ -39,6 +40,9 @@ class TestRepository extends ServiceEntityRepository
                 't.id = r.tests'
             );
 
+        // applico i filtri alla query
+        // gli passo l'alias di default usato per filtrare sull'entità test
+        // e gli passo uno specifico alias per l'entità relationship
         $filterParams->applyFilter($qb, 't', [
             RelationshipFilterDto::class => 'r'
         ]);

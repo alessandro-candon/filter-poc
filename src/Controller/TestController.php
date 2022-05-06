@@ -22,8 +22,12 @@ class TestController extends AbstractController
     ): Response
     {
 
+        // mi creo una classe che ha all'interno tutti i dati passati
+        // attraverso i query params per fare i filtri
         $filterParams = new FilterParams($request->query->all());
 
+        // Aggiungo che tipi di filtro la pia API espone
+        // in questo caso ha 2 filtri test e relationship
         $filterParams
             ->addApplier($testNameFilterApplier)
             ->addApplier($relationshipNameFilterApplier);
