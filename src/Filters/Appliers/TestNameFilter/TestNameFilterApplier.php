@@ -5,7 +5,6 @@ namespace App\Filters\Appliers\TestNameFilter;
 use App\Filters\Shared\FilterApplierInterface;
 use App\Filters\Shared\FilterDtoInterface;
 use Doctrine\ORM\QueryBuilder;
-use phpDocumentor\Reflection\Types\This;
 
 class TestNameFilterApplier extends FilterApplierInterface
 {
