@@ -143,6 +143,9 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "spatie/data-transfer-object": {
+        "version": "3.7.3"
+    },
     "symfony/asset": {
         "version": "v6.0.7"
     },

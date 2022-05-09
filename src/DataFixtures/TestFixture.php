@@ -21,6 +21,7 @@ class TestFixture extends Fixture
         for ($i = 0; $i <= 100; $i++) {
             $test = new Test();
             $test->setName($i)
+                ->setWhenDate(new \DateTime())
                 ->addRelationship($rs[$i+1]);
             $manager->persist($test);
         }

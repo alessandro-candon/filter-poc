@@ -24,9 +24,13 @@ class RelationshipNameFilterApplier extends FilterApplierInterface
         )->setParameter('name', $this->filterDto->getName());
     }
 
-    public function buildDto($data): FilterDtoInterface {
+    public function buildDto($data): void {
         $this->filterDto = new RelationshipFilterDto($data);
         $this->validate($this->filterDto);
-        return $this->filterDto;
+    }
+
+    public function support(string $queryParamKey): bool
+    {
+        return $this->key() === $queryParamKey;
     }
 }
