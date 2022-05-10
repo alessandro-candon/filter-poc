@@ -25,7 +25,7 @@ class TestWhenDateFilterApplier extends FilterApplierInterface
         foreach ($this->testWhenDateDTOs as $index => $testWhenDateDTO) {
             $operator = MathFilterOperators::mapping()[$testWhenDateDTO->getOperator()];
             $target
-                ->where(sprintf('%s.whenDate %s :%s', $alias, $operator, self::KEY.$index))
+                ->andWhere(sprintf('%s.whenDate %s :%s', $alias, $operator, self::KEY.$index))
                 ->setParameter(self::KEY.$index, $testWhenDateDTO->getWhenDate());
         }
     }

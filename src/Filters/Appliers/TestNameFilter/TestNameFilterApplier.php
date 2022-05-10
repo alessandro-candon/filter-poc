@@ -19,7 +19,7 @@ class TestNameFilterApplier extends FilterApplierInterface
 
     public function apply(QueryBuilder $target, string $alias): void
     {
-        $target->where(
+        $target->andWhere(
             sprintf('%s.name = :name', $alias)
         )->setParameter('name', $this->filterDto->getName());
     }
