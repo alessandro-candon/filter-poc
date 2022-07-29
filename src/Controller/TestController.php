@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Filters\Appliers\RelationshipNameFilter\RelationshipNameFilterApplier;
 use App\Filters\Appliers\TestNameFilter\TestNameFilterApplier;
+use App\Filters\Appliers\TestWhenDateFilter\TestWhenDateFilterApplier;
 use App\Filters\Shared\FilterParams;
 use App\Repository\TestRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +19,8 @@ class TestController extends AbstractController
         Request $request,
         TestRepository $testRepository,
         TestNameFilterApplier $testNameFilterApplier,
-        RelationshipNameFilterApplier $relationshipNameFilterApplier
+        RelationshipNameFilterApplier $relationshipNameFilterApplier,
+        TestWhenDateFilterApplier $testWhenDateFilterApplier
     ): Response
     {
 
@@ -30,7 +32,8 @@ class TestController extends AbstractController
         // in questo caso ha 2 filtri test e relationship
         $filterParams
             ->addApplier($testNameFilterApplier)
-            ->addApplier($relationshipNameFilterApplier);
+            ->addApplier($relationshipNameFilterApplier)
+            ->addApplier($testWhenDateFilterApplier);
 
         $test = $testRepository->findAllWithFilters($filterParams);
 

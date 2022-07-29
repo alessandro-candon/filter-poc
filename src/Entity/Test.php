@@ -18,6 +18,9 @@ class Test
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
+    #[ORM\Column(type: 'datetime')]
+    private \DateTime $whenDate;
+
     #[ORM\OneToMany(mappedBy: 'tests', targetEntity: Relationship::class)]
     private $relationships;
 
@@ -72,4 +75,24 @@ class Test
 
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getWhenDate(): \DateTime
+    {
+        return $this->whenDate;
+    }
+
+    /**
+     * @param \DateTime $whenDate
+     * @return Test
+     */
+    public function setWhenDate(\DateTime $whenDate): Test
+    {
+        $this->whenDate = $whenDate;
+        return $this;
+    }
+
+
 }

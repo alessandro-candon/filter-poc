@@ -19,14 +19,18 @@ class RelationshipNameFilterApplier extends FilterApplierInterface
 
     public function apply(QueryBuilder $target, string $alias): void
     {
-        $target->where(
+        $target->andWhere(
             sprintf('%s.name = :name', $alias)
         )->setParameter('name', $this->filterDto->getName());
     }
 
-    public function buildDto($data): FilterDtoInterface {
+    public function buildDto($data): void {
         $this->filterDto = new RelationshipFilterDto($data);
         $this->validate($this->filterDto);
-        return $this->filterDto;
+    }
+
+    public function support(string $queryParamKey): bool
+    {
+        return $this->key() === $queryParamKey;
     }
 }
