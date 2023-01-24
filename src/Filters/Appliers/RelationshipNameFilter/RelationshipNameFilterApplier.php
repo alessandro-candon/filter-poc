@@ -2,11 +2,11 @@
 
 namespace App\Filters\Appliers\RelationshipNameFilter;
 
-use App\Filters\Shared\FilterApplierInterface;
+use App\Filters\Shared\FilterApplierAbstract;
 use App\Filters\Shared\FilterDtoInterface;
 use Doctrine\ORM\QueryBuilder;
 
-class RelationshipNameFilterApplier extends FilterApplierInterface
+class RelationshipNameFilterApplier extends FilterApplierAbstract
 {
     const KEY = 'relationship_name';
 
