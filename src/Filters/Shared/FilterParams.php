@@ -12,7 +12,7 @@ class FilterParams
     /** @var array<string, mixed> */
     protected array $data;
 
-    /** @var FilterApplierInterface[] */
+    /** @var FilterApplierAbstract[] */
     protected array $appliers = [];
 
     /**
@@ -23,7 +23,7 @@ class FilterParams
         $this->data = $data;
     }
 
-    public function addApplier(FilterApplierInterface $applier): self
+    public function addApplier(FilterApplierAbstract $applier): self
     {
         if (array_key_exists($applier->key(), $this->appliers)) {
             throw new InvalidArgumentException($applier::class . ' is already set');

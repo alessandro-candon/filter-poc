@@ -5,7 +5,7 @@ namespace App\Filters\Shared;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-abstract class FilterApplierInterface
+abstract class FilterApplierAbstract
 {
     public function __construct(protected ValidatorInterface $validator)
     {

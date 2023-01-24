@@ -2,13 +2,13 @@
 
 namespace App\Filters\Appliers\TestWhenDateFilter;
 
-use App\Filters\Shared\FilterApplierInterface;
+use App\Filters\Shared\FilterApplierAbstract;
 use App\Filters\Shared\FilterDtoInterface;
 use App\Filters\Shared\Operators\MathFilterOperators;
 use Doctrine\ORM\QueryBuilder;
 use Exception;
 
-class TestWhenDateFilterApplier extends FilterApplierInterface
+class TestWhenDateFilterApplier extends FilterApplierAbstract
 {
     const KEY = 'test_when_date';
 

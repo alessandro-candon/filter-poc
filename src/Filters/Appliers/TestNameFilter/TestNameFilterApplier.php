@@ -2,11 +2,11 @@
 
 namespace App\Filters\Appliers\TestNameFilter;
 
-use App\Filters\Shared\FilterApplierInterface;
+use App\Filters\Shared\FilterApplierAbstract;
 use App\Filters\Shared\FilterDtoInterface;
 use Doctrine\ORM\QueryBuilder;
 
-class TestNameFilterApplier extends FilterApplierInterface
+class TestNameFilterApplier extends FilterApplierAbstract
 {
     const KEY = 'test_name';
 
